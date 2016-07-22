@@ -1,5 +1,5 @@
 require './models/user'
-require 'Faker'
+require 'faker'
 
 (1..10).each do |i|
   @user = User.create(
@@ -9,5 +9,6 @@ require 'Faker'
   password: Faker::Internet.password(8),
   cc_number: Faker::Business.credit_card_number)
 
-  # @user.update_attributes(:email, Faker::Internet.email("#{@user[:name]}"))
+  @new_email = Faker::Internet.email("#{@user[:name]}")
+  @user.update_attribute(:email, "#{@new_email}")
 end
