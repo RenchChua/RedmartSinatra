@@ -1,0 +1,30 @@
+<!-- show all entries in the table with name same as name of folder -->
+
+<table class="table table-striped" style="border: 1px solid black">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email Address</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user|%>
+      <tr>
+        <td>
+          <%= user[:id]%>
+        </td>
+        <td>
+          <%= user[:name]%>
+        </td>
+        <td>
+          <%= user[:email]%>
+        </td>
+        <td>
+          <%= user[:address]%>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
