@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user|%>
+    <% (@users.order:id).each do |user|%>
       <tr>
         <td>
           <%= user[:id]%>
@@ -29,7 +29,7 @@
           <a href= "/users/<%= user[:id]%>">View |</a>
           <form method="post" action="/users/<%= user[:id] %>">
             <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Delete">
+            <input type="submit" class="btn btn-danger" value="Delete">
           </form>
         </td>
       </tr>

@@ -7,8 +7,6 @@ class RedmartSinatra < Sinatra::Base
     erb 'This is where we tell you about us'
   end
 
-
-
   get '/users' do
     @users = User.all
     erb :'./users/index'
@@ -58,5 +56,4 @@ class RedmartSinatra < Sinatra::Base
       erb :"users/#{@deleted_user.id}"
     end
   end
-
 end
