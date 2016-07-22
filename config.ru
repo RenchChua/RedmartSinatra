@@ -9,4 +9,5 @@ require './models/user'
 require './app'
 
 # CLASS REFERS TO THE CLASS NAME IN app.rb
+use Rack::MethodOverride
 run RedmartSinatra

@@ -1,0 +1,8 @@
+.header{
+  display: inline-block;
+}
+
+.container{
+  position: relative;
+  top: 15%;
+}

@@ -5,11 +5,23 @@
     <title>RedmartSinatra</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%= url('/css/style.css')%>" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div class="container">
-      <h1>Redmart Sinatra App</h1>
-      <%= yield %>
+    <div class="container header col-md-12">
+      <!-- <h1 class="header col-md-6">Redmart Sinatra App</h1> -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <h1 class="header col-md-6">Renchmart Sinatra App</h1>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users">Users</a></li>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/products">Products</a></li>
+        </ul>
+      </nav>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </body>

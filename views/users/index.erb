@@ -7,6 +7,7 @@
       <th>Name</th>
       <th>Email Address</th>
       <th>Address</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,13 @@
         </td>
         <td>
           <%= user[:address]%>
+        </td>
+        <td>
+          <a href= "/users/<%= user[:id]%>">View |</a>
+          <form method="post" action="/users/<%= user[:id] %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete">
+          </form>
         </td>
       </tr>
     <%end%>

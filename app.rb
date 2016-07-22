@@ -9,36 +9,54 @@ class RedmartSinatra < Sinatra::Base
 
 
 
-  get '/index' do
+  get '/users' do
     @users = User.all
     erb :'./users/index'
   end
 
   #get form view to create new user
-  get "/users/new" do
-    @pizza = User.new
+  get "/register" do
+    @user = User.new
     erb :"./users/new"
   end
 
-  # creating a pizza, where the new form POSTs to, it does the actual creation
+  # creating a user, where the new form POSTs to, it does the actual creation
 
   post "/users" do
     @user = User.new(params[:user])
     if @user.save
-      redirect("/users/#{@user.id}")
+      redirect("/users")
     else
-      erb(:"user/new")
+      erb :"./users/new"
     end
   end
 
   # get form view to edit an existing user
   get "/users/:id/edit" do
-    erb "get form to edit one user with id #{params[:id]}"
+    @edit_user = User.find(params[:id])
+    erb :"./users/edit"
+  end
+  # what are the attributes in ure user database
+  put "/users/:id" do
+    @edit_user = User.find(params[:id])
+    puts @edit_user
+    puts params[:user]
+    @edit_user.update_attributes(params[:user])
+    redirect "/users/#{params[:id]}"
   end
 
   get '/users/:id' do
     @user = User.find(params[:id])
-    erb :'each_user'
+    erb :'./users/show'
+  end
+
+  delete '/users/:id' do
+    @delete_user = User.find(params[:id])
+    if @delete_user.destroy
+      redirect("/users")
+    else
+      erb :"users/#{@deleted_user.id}"
+    end
   end
 
 end
