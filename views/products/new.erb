@@ -1,0 +1,29 @@
+<form action="/products" method="post">
+  <div class="form-group col-sm-6">
+    <label for="name" class="control-label">Product Name:</label>
+    <input type="text" name="product[name]" placeholder="Product Name" id="name" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="brand_id" class="control-label">Brand_ID:</label>
+      <input type="integer" name="product[brand_id]" placeholder="Brand ID" id="brand_id" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="category" class="control-label">Cateogry_ID:</label>
+      <input type="integer" name="product[category_id]" placeholder="Category ID" id="category_id" class="form-control col-sm-12">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="price" class="control-label">Price:</label>
+    <input type="float" name="product[price]" placeholder="Price(2 d.p.)" id="price" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-12">
+    <label for="image_src" class="control-label">Image Source:</label>
+    <input type="text" name="product[image_src]" placeholder="URL of image source" id="image_src" class="form-control">
+  </div>
+
+  <div class="col-sm-12">
+    <input type="submit" value="Add New Product" class='btn btn-block'>
+  </div>

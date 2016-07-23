@@ -1,0 +1,32 @@
+<h3>Change Stuff about This Product</h3>
+
+<form action="/products/<%=@edit_product[:id]%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <div class="form-group col-sm-6">
+    <label for="name" class="control-label">Product Name:</label>
+    <input type="text" name="product[name]" value="<%=@edit_product[:name]%>" id="name" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="brand_id" class="control-label">Brand_ID:</label>
+      <input type="integer" name="product[brand_id]" value="<%=@edit_product[:brand_id]%>" id="brand_id" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="category" class="control-label">Cateogry_ID:</label>
+      <input type="integer" name="product[category_id]" value="<%=@edit_product[:category_id]%>" id="category_id" class="form-control col-sm-12">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label for="price" class="control-label">Price:</label>
+    <input type="float" name="product[price]" value="<%=@edit_product[:price]%>" id="price" class="form-control">
+  </div>
+
+  <div class="form-group col-sm-12">
+    <label for="image_src" class="control-label">Image Source:</label>
+    <input type="text" name="product[image_src]" value="<%=@edit_product[:image_src]%>"id="image_src" class="form-control">
+  </div>
+
+  <div class="col-sm-12">
+    <input type="submit" value="Change ME!!!" class='btn btn-block'>
+  </div>

@@ -1,0 +1,47 @@
+<a href= "/products/new">
+  <div class="btn btn-primary add-new">
+    Add New Product
+  </div>
+</a>
+
+<table class="table table-striped" style="border: 1px solid black">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Brand_ID</th>
+      <th>Category_ID</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (@products.order:id).each do |product|%>
+      <tr>
+        <td>
+          <%= product[:id]%>
+        </td>
+        <td>
+          <%= product[:name]%>
+        </td>
+        <td>
+          <%= product[:brand_id]%>
+        </td>
+        <td>
+          <%= product[:category_id]%>
+        </td>
+        <td>
+          <%= product[:price]%>
+        </td>
+        <td>
+          <a href= "/products/<%= product[:id]%>">View |</a>
+          <a href= "products/<%= product[:id]%>/edit">Edit |</a>
+          <form method="post" action="/products/<%= product[:id] %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" class="btn btn-danger" value="Delete">
+          </form>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

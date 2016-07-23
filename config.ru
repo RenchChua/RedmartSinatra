@@ -4,6 +4,7 @@ Bundler.require
 
 # THIS IS THE MODEL
 require './models/user'
+require './models/product'
 
 # THIS IS THE CONTROLLER
 require './app'

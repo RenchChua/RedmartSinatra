@@ -1,0 +1,12 @@
+<h2>Each Product's Page</h2>
+
+<h3>
+  The name of this product is <%= @product[:name]%> <a href= "/products/<%= @product[:id]%>/edit">Change Me!</a>
+</h3>
+
+<p>
+  <strong>Id of this product:</strong><%= @product[:id]%>
+  <br></br>
+  <strong>Brand of this product:</strong> <%= @product[:brand_id] %> <br></br>
+  <strong>Category of this product:</strong> <%= @product[:category_id]%>
+</p>

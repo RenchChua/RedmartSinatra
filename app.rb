@@ -7,6 +7,9 @@ class RedmartSinatra < Sinatra::Base
     erb 'This is where we tell you about us'
   end
 
+
+# controller for users
+
   get '/users' do
     @users = User.all
     erb :'./users/index'
@@ -34,11 +37,9 @@ class RedmartSinatra < Sinatra::Base
     @edit_user = User.find(params[:id])
     erb :"./users/edit"
   end
-  # what are the attributes in ure user database
+
   put "/users/:id" do
     @edit_user = User.find(params[:id])
-    puts @edit_user
-    puts params[:user]
     @edit_user.update_attributes(params[:user])
     redirect "/users/#{params[:id]}"
   end
@@ -53,7 +54,53 @@ class RedmartSinatra < Sinatra::Base
     if @delete_user.destroy
       redirect("/users")
     else
-      erb :"users/#{@deleted_user.id}"
+      erb :"./users/show"
     end
   end
+
+# controllers for products
+  get '/products' do
+    @products = Product.all
+    erb :'./products/index'
+  end
+
+  get "/products/new" do
+    @product = Product.new
+    erb :"./products/new"
+  end
+
+  post "/products" do
+    @product = Product.new(params[:product])
+    if @product.save
+      redirect("/products")
+    else
+      erb :"./products/new"
+    end
+  end
+
+  get "/products/:id/edit" do
+    @edit_product = Product.find(params[:id])
+    erb :"./products/edit"
+  end
+
+  put "/products/:id" do
+    @edit_product = Product.find(params[:id])
+    @edit_product.update_attributes(params[:product])
+    redirect "/products/#{params[:id]}"
+  end
+
+  get '/products/:id' do
+    @product = Product.find(params[:id])
+    erb :'./products/show'
+  end
+
+  delete '/products/:id' do
+    @delete_product = Product.find(params[:id])
+    if @delete_product.destroy
+      redirect("/products")
+    else
+      erb :"./products/show"
+    end
+  end
+
 end

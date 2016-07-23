@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160721101316) do
     t.integer "brand_id",                            null: false
     t.integer "category_id",                         null: false
     t.decimal "price",       precision: 6, scale: 2
+    t.string  "image_src"
   end
 
   create_table "purchases", force: :cascade do |t|
