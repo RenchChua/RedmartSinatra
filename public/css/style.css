@@ -55,6 +55,10 @@ td .btn{
   padding: 3%;
 }
 
+.cat-pdt-container img{
+  height: 300px;
+}
+
 .product-words-container{
   margin-left: 17%;
 }
