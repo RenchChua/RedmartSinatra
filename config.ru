@@ -5,6 +5,8 @@ Bundler.require
 # THIS IS THE MODEL
 require './models/user'
 require './models/product'
+require './models/category'
+require './models/brand'
 
 # THIS IS THE CONTROLLER
 require './app'

@@ -1,39 +1,43 @@
 <!-- show all entries in the table with name same as name of folder -->
 
-<table class="table table-striped" style="border: 1px solid black">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email Address</th>
-      <th>Address</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% (@users.order:id).each do |user|%>
+<div class="container col-md-8 col-xs-8 index-table">
+  <table class="table table-striped" style="border: 1px solid black">
+    <thead>
       <tr>
-        <td>
-          <%= user[:id]%>
-        </td>
-        <td>
-          <%= user[:name]%>
-        </td>
-        <td>
-          <%= user[:email]%>
-        </td>
-        <td>
-          <%= user[:address]%>
-        </td>
-        <td>
-          <a href= "/users/<%= user[:id]%>">View |</a>
-          <a href= "users/<%= user[:id]%>/edit">Edit |</a>
-          <form method="post" action="/users/<%= user[:id] %>">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" class="btn btn-danger" value="Delete">
-          </form>
-        </td>
+        <th class="col-sm-0.5 col-xs-0.5">ID</th>
+        <th class="col-sm-2 col-xs-3">Name</th>
+        <th class="col-sm-3 col-xs-3">Email Address</th>
+        <th class="col-sm-3 col-xs-4">Address</th>
+        <th class="col-sm-2.05 col-xs-2.05">Actions</th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% (@users.order:id).each do |user|%>
+        <tr>
+          <td>
+            <%= user[:id]%>
+          </td>
+          <td>
+            <%= user[:name]%>
+          </td>
+          <td>
+            <%= user[:email]%>
+          </td>
+          <td>
+            <%= user[:address]%>
+          </td>
+          <td>
+            <div class="container">
+              <a href= "/users/<%= user[:id]%>" class="btn btn-primary btn-left">View</a>
+              <a href= "users/<%= user[:id]%>/edit" class="btn btn-primary btn-centre">Edit</a>
+              <form method="post" action="/users/<%= user[:id] %>" class="btn btn-right">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" class="btn btn-primary btn-right" value="Delete">
+              </form>
+            </div>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

@@ -1,10 +1,36 @@
-<a href= "/products/new">
-  <div class="btn btn-primary add-new">
-    Add New Product
-  </div>
+<a href="/products/new">
+    <div class="btn btn-primary add-new container-fluid">
+        Add New Product
+    </div>
 </a>
 
-<table class="table table-striped" style="border: 1px solid black">
+<div class="container-fluid col-md-10 col-xs-10 products-container">
+    <% (@categories.order:id).each do |category|%>
+      <div class="container-fluid col-md-12 col-xs-12 category-container">
+        <%if Product.where("category_id=#{category[:id]}").length !=0%>
+        <h3><%=category[:name]%></h3>
+          <%((Product.where("category_id=#{category[:id]}")).order:id).each do |product_cat|%>
+            <div class="cat-pdt-container col-md-4 col-xs-4">
+              <img src="<%= url("#{product_cat[:image_src]}")%>" alt="product_image"/>
+              <div class="product-words-container">
+                <p><%=product_cat[:name]%>  $<%=product_cat[:price]%></p>
+                <div class="container">
+                  <a href="/products/<%= product_cat[:id]%>" class="btn btn-primary btn-left">View</a>
+                  <a href="products/<%= product_cat[:id]%>/edit" class="btn btn-primary btn-centre">Edit</a>
+                  <form method="post" action="/products/<%= product_cat[:id] %>" class="btn btn-right">
+                      <input type="hidden" name="_method" value="delete">
+                      <input type="submit" class="btn btn-primary btn-right" value="Delete">
+                    </form>
+                  </div>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
+      </div>
+    <%end%>
+</div>
+
+<!-- <table class="table table-striped" style="border: 1px solid black">
   <thead>
     <tr>
       <th>ID</th>
@@ -34,14 +60,17 @@
           <%= product[:price]%>
         </td>
         <td>
-          <a href= "/products/<%= product[:id]%>">View |</a>
-          <a href= "products/<%= product[:id]%>/edit">Edit |</a>
-          <form method="post" action="/products/<%= product[:id] %>">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" class="btn btn-danger" value="Delete">
-          </form>
+          <div class="container">
+            <a href= "/products/<%= product[:id]%>" class="btn btn-primary btn-left">View</a>
+            <a href= "products/<%= product[:id]%>/edit" class="btn btn-primary btn-centre">Edit</a>
+            <form method="post" action="/products/<%= product[:id] %>" class="btn btn-right">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" class="btn btn-primary btn-right" value="Delete">
+            </form>
+          </div>
+
         </td>
       </tr>
     <%end%>
   </tbody>
-</table>
+</table> -->

@@ -1,0 +1,35 @@
+<a href= "/categories/new">
+  <div class="btn btn-primary add-new">
+    Add New Product
+  </div>
+</a>
+
+<table class="table table-striped" style="border: 1px solid black">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (@category.order:id).each do |category|%>
+      <tr>
+        <td>
+          <%= category[:id]%>
+        </td>
+        <td>
+          <%= category[:name]%>
+        </td>
+        <td>
+          <a href= "/categories/<%= category[:id]%>">View |</a>
+          <a href= "categories/<%= category[:id]%>/edit">Edit |</a>
+          <form method="post" action="/categories/<%= category[:id] %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" class="btn btn-primary" value="Delete">
+          </form>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
