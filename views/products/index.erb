@@ -4,13 +4,13 @@
     </div>
 </a>
 
-<div class="container-fluid col-md-10 col-xs-10 products-container">
+<div class="container-fluid products-container">
     <% (@categories.order:id).each do |category|%>
-      <div class="container-fluid col-md-12 col-xs-12 category-container">
+      <div class="container-fluid category-container">
         <%if Product.where("category_id=#{category[:id]}").length !=0%>
         <h3><%=category[:name]%></h3>
           <%((Product.where("category_id=#{category[:id]}")).order:id).each do |product_cat|%>
-            <div class="cat-pdt-container col-md-4 col-xs-4">
+            <div class="cat-pdt-container col-md-4 col-xs-12">
               <img src="<%= url("#{product_cat[:image_src]}")%>" alt="product_image"/>
               <div class="product-words-container">
                 <p><%=product_cat[:name]%>  $<%=product_cat[:price]%></p>
