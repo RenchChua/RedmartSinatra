@@ -7,9 +7,9 @@
 <div class="container-fluid products-container">
     <% (@categories.order:id).each do |category|%>
       <div class="container-fluid category-container">
-        <%if Product.where("category_id=#{category[:id]}").length !=0%>
+        <%if category.products.length !=0%>
         <h3><%=category[:name]%></h3>
-          <%((Product.where("category_id=#{category[:id]}")).order:id).each do |product_cat|%>
+          <%category.products.each do |product_cat|%>
             <div class="cat-pdt-container col-md-4 col-xs-12">
               <img src="<%= url("#{product_cat[:image_src]}")%>" alt="product_image"/>
               <div class="product-words-container">
